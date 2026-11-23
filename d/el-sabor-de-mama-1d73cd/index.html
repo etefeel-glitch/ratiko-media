@@ -104,6 +104,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .card .qty{display:none;align-items:center;gap:6px;background:var(--tinta);color:#fff;border-radius:99px;padding:3px}
 .card .qty button{width:28px;height:28px;border-radius:50%;border:none;background:rgba(255,255,255,.16);color:#fff;font-weight:800}
 .card.tiene{border-color:var(--c1)}
+.card.agotado{opacity:.55;filter:grayscale(.8);pointer-events:none}
+.card.agotado .add{background:#888}.card.agotado .panel:after{content:"AGOTADO";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-12deg);background:var(--tinta);color:#fff;font-weight:800;font-size:14px;letter-spacing:.1em;padding:6px 14px;border-radius:8px}
+.aviso-hoy{display:none;position:relative;z-index:3;max-width:620px;margin:14px auto 0;background:var(--c2);color:var(--tinta);font-weight:800;font-size:15px;padding:10px 16px;border-radius:14px;box-shadow:3px 3px 0 var(--tinta)}
+.aviso-hoy.ver{display:block}
 .card.tiene .add{display:none}.card.tiene .qty{display:flex}
 
 /* banda de catering / encargos */
@@ -221,17 +225,59 @@ footer .firma img{width:22px;height:22px}
 .festivo .grid .card:hover{transform:rotate(0) translateY(-4px)}
 .festivo .sec{position:relative}
 .festivo .sec-head:after{content:"";display:block;width:100%;height:8px;margin-top:8px;background:linear-gradient(90deg,var(--c2) 0 50%,var(--c1) 50% 75%,var(--c1d) 75%);border-radius:99px}
+
+/* ===== variante CON-MARCA: logo y mascota del cliente ===== */
+.marca-hero,.masc-hoy,.masc-vacio,.masc-pie,.toast{display:none}
+.con-marca .eco{display:none}
+.con-marca .hero{background:
+  radial-gradient(circle at 50% 46%,transparent 0 30%,rgba(0,0,0,0) 30%),
+  repeating-conic-gradient(from 0deg at 50% 46%,var(--c1) 0 9deg,transparent 9deg 24deg),
+  radial-gradient(color-mix(in srgb,var(--c1) 30%,var(--c2)) 22%,transparent 24%) 0 0/34px 34px,
+  var(--c2);color:var(--tinta);padding-bottom:40px}
+.con-marca .hero .meta .ab{background:rgba(255,255,255,.75)}
+.con-marca .marca-hero{display:grid;position:relative;max-width:1000px;margin:10px auto 0;grid-template-columns:1fr;justify-items:center}
+.marca-hero .logo-g{width:min(78vw,430px);filter:drop-shadow(0 18px 24px rgba(0,0,0,.35));animation:respira 5s ease-in-out infinite}
+@keyframes respira{50%{transform:scale(1.03) rotate(-2deg)}}
+.marca-hero .masc{position:absolute;right:max(-2vw,calc(50% - 330px));bottom:-30px;width:min(40vw,230px);filter:drop-shadow(8px 12px 0 rgba(0,0,0,.2))}
+.marca-hero .globo{position:absolute;left:max(0px,calc(50% - 320px));top:8%;background:#fff;color:var(--tinta);font-family:var(--mano);font-size:clamp(17px,4.6vw,24px);padding:10px 16px;border-radius:20px 20px 20px 4px;box-shadow:3px 3px 0 var(--tinta);transform:rotate(-5deg);max-width:200px;line-height:1.1}
+.con-marca .hero .acciones{margin-top:40px}
+.con-marca .hero .btn.b{color:var(--tinta);box-shadow:inset 0 0 0 2px var(--tinta);background:rgba(255,255,255,.6)}
+.con-marca .hero .btn.a{background:var(--c1);color:#fff;box-shadow:0 4px 0 var(--c1d)}
+.con-marca .chips span{background:rgba(255,255,255,.8);color:var(--tinta)}
+.con-marca .onda path{fill:var(--c2)}
+.con-marca .masc-hoy{display:block;position:absolute;left:4%;bottom:0;height:92%;z-index:2;filter:drop-shadow(6px 8px 0 rgba(0,0,0,.18))}
+.con-marca .hoy .izq img#hoy-img{position:absolute;right:5%;top:50%;transform:translateY(-50%) rotate(6deg);width:min(230px,46%);z-index:1}
+.con-marca .masc-hoy{height:80%!important;bottom:3%!important;left:0!important}
+.con-marca .hoy .izq img#hoy-img{z-index:3!important;width:min(250px,52%)!important;right:3%!important}
+@media (min-width:760px){.con-marca .hoy{grid-template-columns:1.25fr 1fr}}
+.con-marca .hero .meta{display:inline-block;background:rgba(255,255,255,.85);padding:8px 14px;border-radius:14px;box-shadow:3px 3px 0 var(--tinta)}
+@media (max-width:759px){.con-marca .marca-hero .masc{width:31vw;right:0;bottom:-14px}.con-marca .marca-hero .globo{top:2%}}
+.con-marca .hoy .izq{background:radial-gradient(color-mix(in srgb,var(--c1) 35%,var(--c2)) 22%,transparent 24%) 0 0/30px 30px,var(--c2)!important}
+.con-marca .masc-vacio{display:block;width:120px;margin:6px auto 0}
+.con-marca .masc-pie{display:block;width:150px;margin:-110px auto 8px;position:relative}
+.con-marca .patron{height:110px}
+.toast{position:fixed;left:50%;bottom:90px;z-index:95;transform:translateX(-50%) translateY(20px);opacity:0;transition:.35s;display:flex;align-items:center;gap:8px;background:#fff;border-radius:20px;padding:6px 16px 6px 6px;box-shadow:0 12px 26px rgba(0,0,0,.3),3px 3px 0 var(--tinta);font-weight:800;pointer-events:none}
+.con-marca .toast{display:flex}
+.toast.ver{opacity:1;transform:translateX(-50%)}
+.toast img{height:64px}
+@media (min-width:760px){
+  .con-marca .marca-hero .masc{width:270px;bottom:-40px}
+  .con-marca .marca-hero .globo{top:14%}
+}
+@media (min-width:1100px){.toast{left:auto;right:410px;transform:translateY(20px)}.toast.ver{transform:none}}
+
 .hero{background:#F7B500;color:#3A2412}.hero .meta .ab{background:rgba(0,0,0,.1)}.eco .p{-webkit-text-stroke:2px rgba(214,39,24,.6)}.eco .p.lleno{color:#D62718;text-shadow:5px 5px 0 #3A2412}.hero .btn.a{background:#D62718;color:#fff;box-shadow:0 4px 0 #A3190F}.hero .btn.b{color:#3A2412;box-shadow:inset 0 0 0 2px #3A2412}.chips span{background:rgba(255,255,255,.55)}.onda path{fill:#F7B500}.destello{color:#D62718!important}.precio-tag .q{background:#D62718}
 </style>
 </head>
-<body class="cartel mama">
+<body class="cartel mama con-marca">
 <nav class="nav">
-  <a class="logo" href="#"><b>👩🏽‍🍳</b><span>El Sabor de Mamá</span></a>
+  <a class="logo" href="#"><b>🍛</b><span>El Sabor de Mamá</span></a>
   <div class="links" id="links"></div>
   <button class="carro" id="carro" aria-label="Ver mi pedido">🛒 <span>Mi pedido</span> <i id="cuenta-n">0</i></button>
 </nav>
 
 <header class="hero">
+  <div class="aviso-hoy" id="aviso-hoy"></div>
   <div class="meta">Comida criolla · 📍 Santiago<br><span class="ab">Abierto hasta 5 pm</span></div>
   <div class="eco" id="eco">
     <div class="p">SABOR DE MAMÁ</div><div class="p lleno">SABOR DE MAMÁ</div><div class="p">SABOR DE MAMÁ</div>
@@ -239,6 +285,7 @@ footer .firma img{width:22px;height:22px}
     <div class="precio-tag" id="hero-tag"><div class="q">HOY</div><div class="d"><small id="hero-nom"></small><b id="hero-pr"></b></div></div>
     <span class="destello" style="left:8%;top:12%">✦</span><span class="destello" style="right:10%;top:62%;font-size:20px">✦</span><span class="destello" style="right:18%;top:8%;font-size:16px">✦</span>
   </div>
+  <div class="marca-hero"><img class="logo-g" src="fotos/logo.png" alt=""><img class="masc" src="fotos/m-bandeja.png" alt=""><div class="globo">¡Hola! ¿Qué te sirvo hoy? 😋</div></div>
   <div class="hero-foto"><h1 class="tit">El Sabor<br>de Mamá</h1><p>Comida criolla hecha con amor. Pide aquí y te llega por WhatsApp.</p></div>
   <div class="acciones"><button class="btn a" id="hero-add">+ Pedir este</button><a class="btn b" href="#menu">Ver el menú ↓</a></div>
   <div class="chips"><span>🛵 Delivery</span><span>🍛 Bufé todos los días</span><span>💵 Efectivo o transferencia</span></div>
@@ -251,7 +298,7 @@ footer .firma img{width:22px;height:22px}
   <div>
     <section class="hoy" id="hoy">
       <div class="izq" id="hoy-izq">
-        <img id="hoy-img" alt="">
+        <img id="hoy-img" alt=""><img class="masc-hoy" src="fotos/m-presenta.png" alt="">
         <div class="estrella"><svg viewBox="0 0 100 100"><path fill="var(--c2)" d="M50 2l9 14 16-6 1 17 17 2-7 15 13 11-15 8 4 16-17-1-6 16-15-8-15 8-6-16-17 1 4-16-15-8 13-11-7-15 17-2 1-17 16 6z"/></svg><span id="hoy-sello">EL MÁS<br>PEDIDO</span></div>
       </div>
       <div class="der">
@@ -282,13 +329,14 @@ footer .firma img{width:22px;height:22px}
 
 <div class="patron" id="patron"></div>
 <footer>
-  <span class="gr">¡Gracias por preferirnos!</span>
+  <img class="masc-pie" src="fotos/m-baila.png" alt=""><span class="gr">¡Gracias por preferirnos!</span>
   Demo preparada por Ratiko Studio para El Sabor de Mamá.<br>Precios y platos de ejemplo: los cambiamos por los tuyos.<br>
   <a class="firma" href="https://instagram.com/ratikostudio" target="_blank" rel="noopener"><img src="fotos/ratiko.svg" alt="">Menú diseñado por Ratiko Studio</a>
 </footer>
 
 <div class="barra" id="barra"><button id="abrir"><span><i id="cuenta">0</i> Ver mi pedido</span><span id="subtotal">RD$0</span></button></div>
 <div class="velo" id="velo"></div>
+<div class="toast" id="toast"><img src="fotos/m-celebra.png" alt=""><span>¡Buena elección! 🙌</span></div>
 <div class="detalle" id="detalle" role="dialog" aria-label="Detalle del plato">
   <button class="cerrar" data-cerrar aria-label="Cerrar">×</button>
   <div class="panel" id="det-panel"><img id="det-img" alt=""></div>
@@ -336,7 +384,7 @@ $("#hoy-n").textContent = hoy.n; $("#hoy-d").textContent = hoy.x ? hoy.d + ". " 
 $("#hoy-izq").style.background = `${PANELES[1]} url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56'><path d='M0 28h56M28 0v56' stroke='${PANELES[0]}' stroke-width='10' opacity='.35'/></svg>`)}")`;
 $("#hoy-sello").innerHTML = (NEGOCIO.sello_hoy || "PLATO<br>DEL DÍA");
 
-function sumar(id, d) { carrito[id] = Math.max(0, (carrito[id] || 0) + d); if (!carrito[id]) delete carrito[id]; pintar(); }
+let tt; function sumar(id, d) { if (d > 0 && document.body.classList.contains("con-marca")) { const t = $("#toast"); t.classList.add("ver"); clearTimeout(tt); tt = setTimeout(() => t.classList.remove("ver"), 1600); } carrito[id] = Math.max(0, (carrito[id] || 0) + d); if (!carrito[id]) delete carrito[id]; pintar(); }
 $("#hero-add").onclick = () => sumar(favId, 1); $("#hoy-add").onclick = () => sumar(hoyId, 1);
 $("#menu").addEventListener("click", e => {
   const card = e.target.closest(".card"); if (!card) return; const id = card.dataset.id; const b = e.target.closest("button");
@@ -356,7 +404,7 @@ function pintar() {
     l += `<div class="linea"><img src="fotos/${it.img}.webp" alt=""><span>${it.n}<small>${rd(q * it.p)}</small></span><div class="q"><button data-id="${id}" data-a="-">−</button><b>${q}</b><button data-id="${id}" data-a="+">+</button></div></div>`; }
   document.querySelectorAll(".card").forEach(c => { const q = carrito[c.dataset.id] || 0; c.classList.toggle("tiene", q > 0); c.querySelector(".qty b").textContent = q; });
   const env = modo === "delivery" && n ? NEGOCIO.delivery : 0;
-  $("#lineas").innerHTML = l || `<p class="vacio">Todavía no has escogido nada. Toca un plato pa' agregarlo 👆</p>`;
+  $("#lineas").innerHTML = l || `<img class="masc-vacio" src="fotos/m-saluda.png" alt=""><p class="vacio">Todavía no has escogido nada. Toca un plato pa' agregarlo 👆</p>`;
   $("#total").textContent = rd(sub + env); $("#nota-envio").textContent = env ? `Incluye ${rd(env)} de delivery.` : "";
   $("#cuenta").textContent = $("#cuenta-n").textContent = n; $("#subtotal").textContent = rd(sub);
   $("#barra").classList.toggle("ver", n > 0); $("#enviar").classList.toggle("off", !n); actualizarWa();
@@ -384,6 +432,33 @@ if (modo === "recoger") $('#modo [data-m="recoger"]').click();
 const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) document.querySelectorAll(".cats a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id)); }), { rootMargin: "-40% 0px -55% 0px" });
 document.querySelectorAll(".sec").forEach(s => obs.observe(s));
 pintar();
+
+// ===== Hoja de Google del dueño: plato del día, agotados, precios y aviso =====
+// La hoja tiene las columnas: Plato | Precio | ¿Hay hoy? (SI/NO) | Plato del día (X). Y una fila con Plato = AVISO para un mensaje arriba.
+function csv(t) { const f = []; let c = "", fila = [], q = false;
+  for (let i = 0; i < t.length; i++) { const ch = t[i];
+    if (q) { if (ch === '"' && t[i + 1] === '"') { c += '"'; i++; } else if (ch === '"') q = false; else c += ch; }
+    else if (ch === '"') q = true; else if (ch === ",") { fila.push(c); c = ""; } else if (ch === "\n") { fila.push(c); f.push(fila); fila = []; c = ""; } else if (ch !== "\r") c += ch; }
+  if (c || fila.length) { fila.push(c); f.push(fila); } return f; }
+const norm = s => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "");
+async function cargarHoja() {
+  const url = NEGOCIO.hoja_csv || (NEGOCIO.hoja ? `https://docs.google.com/spreadsheets/d/${NEGOCIO.hoja}/gviz/tq?tqx=out:csv&gid=0` : null);
+  if (!url) return;
+  let filas; try { filas = csv(await (await fetch(url + (url.includes("?") ? "&" : "?") + "t=" + Date.now())).text()); } catch (e) { return; }
+  const porNombre = {}; for (const [id, it] of Object.entries(porId)) porNombre[norm(it.n)] = id;
+  let nuevoHoy = null;
+  filas.slice(1).forEach(([nombre, precio, hay, delDia]) => {
+    if (norm(nombre) === "aviso") { if ((precio || "").trim()) { $("#aviso-hoy").textContent = "📢 " + precio.trim(); $("#aviso-hoy").classList.add("ver"); } return; }
+    const id = porNombre[norm(nombre)]; if (!id) return; const it = porId[id], card = document.querySelector(`.card[data-id="${id}"]`);
+    const p = parseInt(String(precio).replace(/[^0-9]/g, "")); if (p > 0) { it.p = p; if (card) card.querySelector(".precio").textContent = rd(p); }
+    const no = /^\s*(no|agotad)/i.test(hay || ""); if (card) card.classList.toggle("agotado", no); if (no) delete carrito[id];
+    if (/x|si|s[ií]/i.test(delDia || "") && !no) nuevoHoy = id;
+  });
+  if (nuevoHoy) { const h = porId[nuevoHoy]; $("#hoy-img").src = `fotos/${h.img}.webp`; $("#hoy-n").textContent = h.n; $("#hoy-d").textContent = h.x ? h.d + ". " + h.x : h.d; $("#hoy-p").textContent = rd(h.p); $("#hoy-add").onclick = () => sumar(nuevoHoy, 1); }
+  const fav = porId[favId]; $("#hero-pr").textContent = rd(fav.p);
+  pintar();
+}
+cargarHoja();
 </script>
 </body>
 </html>
