@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ratiko Studio · Menús digitales con pedidos a WhatsApp</title>
+<meta name="description" content="Menús digitales con diseño para comedores y negocios de Santiago. El pedido te llega completo a WhatsApp, sin apps y sin comisiones.">
+<meta property="og:title" content="Ratiko Studio · Tu menú, con pedidos a WhatsApp">
+<meta property="og:description" content="Menús digitales con diseño para comedores de Santiago. Sin apps y sin comisiones.">
+<meta property="og:image" content="https://etefeel-glitch.github.io/ratiko-media/assets/arma.jpg">
+<meta name="theme-color" content="#1F3A5F">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:Fredoka;src:url(assets/Fredoka.ttf)}
+:root{--azul:#1F3A5F;--azul-d:#152a46;--tinta:#141821;--crema:#F3EEE4;--papel:#FFFDF8;--amarillo:#FFC94A;--verde:#1FA855;--gris:#5b6170;--linea:#e2dacb}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--crema);color:var(--tinta);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.f{font-family:Fredoka,system-ui,sans-serif;font-weight:600}
+.wrap{max-width:560px;margin:0 auto;padding:0 18px}
+
+/* cabecera */
+header{background:var(--azul);color:#fff;padding:34px 0 70px;position:relative;overflow:hidden;text-align:center}
+header:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:40px;background:var(--crema);border-radius:50% 50% 0 0/100% 100% 0 0}
+.puntos{position:absolute;inset:0;opacity:.12;background-image:radial-gradient(#fff 1.5px,transparent 2px);background-size:22px 22px}
+.logo{width:96px;height:96px;border-radius:26px;overflow:hidden;margin:0 auto;box-shadow:0 0 0 3px rgba(255,255,255,.25),0 10px 20px rgba(0,0,0,.25)}
+.logo img{width:96px;border-radius:26px}
+header h1{font-size:34px;margin-top:14px;line-height:1}
+header .usuario{opacity:.75;font-size:14px;margin-top:4px}
+header p{font-size:18px;line-height:1.35;margin:16px auto 0;max-width:420px}
+header p b{color:var(--amarillo)}
+.sellos{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.sellos span{background:rgba(255,255,255,.12);padding:6px 12px;border-radius:99px;font-size:13px;font-weight:700}
+
+/* botones */
+.botones{display:grid;gap:12px;margin-top:-30px;position:relative;z-index:2}
+.boton{display:flex;align-items:center;gap:14px;background:var(--papel);border:2px solid var(--tinta);border-radius:20px;padding:12px 16px 12px 12px;text-decoration:none;box-shadow:4px 4px 0 var(--tinta);transition:transform .15s,box-shadow .15s}
+.boton:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--tinta)}
+.boton .ico{width:54px;height:54px;border-radius:14px;flex:none;background:var(--crema) center/cover;display:grid;place-items:center;font-size:26px}
+.boton b{display:block;font-size:17px}
+.boton small{display:block;color:var(--gris);font-size:13.5px;margin-top:2px;line-height:1.3}
+.boton .fl{margin-left:auto;font-size:20px;opacity:.5}
+.boton.wa{background:var(--verde);color:#fff;border-color:#127a3c;box-shadow:4px 4px 0 #127a3c}
+.boton.wa small{color:rgba(255,255,255,.85)}
+.boton.wa .ico{background:rgba(255,255,255,.18)}
+
+/* secciones */
+section{margin-top:44px}
+h2{font-size:30px;line-height:1.05;color:var(--azul)}
+h2 em{font-style:normal;background:var(--amarillo);padding:0 6px;border-radius:6px}
+.lead{color:var(--gris);margin-top:8px;font-size:15.5px}
+.pasos{display:grid;gap:12px;margin-top:18px}
+.paso{display:flex;gap:14px;align-items:flex-start;background:var(--papel);border-radius:18px;padding:16px;border:1.5px solid var(--linea)}
+.paso i{font-style:normal;width:40px;height:40px;border-radius:50%;background:var(--azul);color:#fff;display:grid;place-items:center;font-family:Fredoka;font-size:20px;flex:none}
+.paso b{display:block}
+.paso span{color:var(--gris);font-size:14.5px}
+
+.galeria{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.galeria a{display:block;border-radius:20px;overflow:hidden;background:#fff;text-decoration:none;border:1.5px solid var(--linea)}
+.galeria img{width:100%;aspect-ratio:9/14;object-fit:cover;object-position:top}
+.galeria span{display:block;padding:10px 12px;font-weight:700;font-size:14px}
+.marcas{display:flex;gap:10px;overflow-x:auto;margin-top:14px;padding-bottom:6px;scrollbar-width:none}
+.marcas img{height:180px;border-radius:14px;flex:none}
+
+.precios{display:grid;gap:14px;margin-top:18px}
+.plan{background:var(--papel);border-radius:22px;padding:20px;border:2px solid var(--linea);position:relative}
+.plan.top{border-color:var(--azul)}
+.plan .eti{position:absolute;top:-12px;right:16px;background:var(--amarillo);font-weight:800;font-size:12px;padding:4px 10px;border-radius:99px;border:2px solid var(--tinta)}
+.plan h3{font-size:22px;color:var(--azul)}
+.plan .p{display:flex;align-items:baseline;gap:8px;margin-top:6px;flex-wrap:wrap}
+.plan .p b{font-family:Fredoka;font-size:30px}
+.plan .p span{color:var(--gris);font-size:14px}
+.plan ul{list-style:none;margin-top:10px;display:grid;gap:5px;font-size:14.5px}
+.plan li:before{content:"✓ ";color:var(--verde);font-weight:800}
+.fundador{margin-top:16px;background:var(--amarillo);border-radius:18px;padding:16px 18px;border:2px solid var(--tinta);box-shadow:4px 4px 0 var(--tinta);font-weight:700;transform:rotate(-.8deg)}
+.fundador b{font-family:Fredoka;font-size:19px;display:block}
+
+.preguntas details{background:var(--papel);border-radius:16px;padding:14px 16px;margin-top:10px;border:1.5px solid var(--linea)}
+.preguntas summary{font-weight:800;cursor:pointer;list-style:none}
+.preguntas summary::-webkit-details-marker{display:none}
+.preguntas summary:after{content:"+";float:right;color:var(--azul);font-size:20px;line-height:1}
+.preguntas details[open] summary:after{content:"−"}
+.preguntas p{color:var(--gris);margin-top:8px;font-size:14.5px}
+
+.final{margin:48px 0 0;background:var(--azul);color:#fff;text-align:center;padding:40px 18px 50px}
+.final h2{color:#fff}
+.final p{opacity:.85;margin:10px auto 20px;max-width:380px}
+.final .boton{max-width:420px;margin:0 auto;text-align:left}
+.final small.pie{display:block;margin-top:26px;opacity:.6;font-size:12.5px}
+</style>
+</head>
+<body>
+<header>
+  <div class="puntos"></div>
+  <div class="wrap" style="position:relative">
+    <div class="logo"><img src="assets/icono.svg" alt="Ratiko Studio"></div>
+    <h1 class="f">Ratiko Studio</h1>
+    <div class="usuario">@ratikostudio · Santiago, RD</div>
+    <p>Menús digitales con diseño para comedores y negocios.<br><b>El pedido te llega completo a WhatsApp.</b></p>
+    <div class="sellos"><span>Sin apps</span><span>Sin comisiones</span><span>Listo en una semana</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="botones">
+    <a class="boton" href="dona-fela/menu/"><span class="ico" style="background-image:url(assets/fela-cel.jpg)"></span><span><b>Prueba la demo: Doña Fela</b><small>Un menú de ejemplo. Escoge, pide y mira cómo llega a WhatsApp</small></span><span class="fl">→</span></a>
+    <a class="boton" href="dona-fela/menu/arma.html"><span class="ico" style="background-image:url(assets/arma.jpg)"></span><span><b>Arma tu plato</b><small>El cliente arma su plato y lo ve servido antes de pedir</small></span><span class="fl">→</span></a>
+    <a class="boton" href="#precios"><span class="ico">💸</span><span><b>Precios</b><small>Desde RD$500 al mes · instalación gratis pa' los primeros</small></span><span class="fl">↓</span></a>
+    <a class="boton wa" href="https://wa.me/qr/2L4HZZSUOEHDF1"><span class="ico">💬</span><span><b>Escríbeme por WhatsApp</b><small>Te armo una demo con el menú de tu negocio</small></span><span class="fl">→</span></a>
+  </div>
+
+  <section>
+    <h2 class="f">¿Cómo <em>funciona</em>?</h2>
+    <div class="pasos">
+      <div class="paso"><i>1</i><div><b>Tu cliente escanea el QR o toca tu link</b><span>Desde la mesa, tu Instagram o tu estado de WhatsApp. No descarga nada.</span></div></div>
+      <div class="paso"><i>2</i><div><b>Ve tus platos con foto y precio, y escoge</b><span>Delivery o «paso a buscarlo», con su nombre, dirección y ubicación.</span></div></div>
+      <div class="paso"><i>3</i><div><b>Te llega el pedido completo a WhatsApp</b><span>Platos, total y dirección. Tú solo confirmas. Sin comisiones por pedido.</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="f">Míralo <em>funcionando</em></h2>
+    <p class="lead">Doña Fela es un comedor de ejemplo: lo hicimos para que veas el tipo de trabajo. El tuyo va con tu nombre, tus colores y tus platos.</p>
+    <div class="galeria">
+      <a href="dona-fela/menu/"><img src="assets/fela-cel.jpg" alt="Menú digital de Doña Fela" loading="lazy"><span>Menú con pedidos →</span></a>
+      <a href="dona-fela/menu/arma.html"><img src="assets/arma-cel.jpg" alt="Arma tu plato" loading="lazy"><span>Arma tu plato →</span></a>
+    </div>
+    <p class="lead" style="margin-top:20px"><b>También hacemos tu marca:</b> logo, colores, sello y artes pa' redes.</p>
+    <div class="marcas"><img src="assets/fela-1.jpg" alt="" loading="lazy"><img src="assets/fela-2.jpg" alt="" loading="lazy"><img src="assets/fela-3.jpg" alt="" loading="lazy"></div>
+  </section>
+
+  <section id="precios">
+    <h2 class="f">Precios <em>claros</em></h2>
+    <p class="lead">Una instalación y una mensualidad pequeña que incluye cambiarte platos y precios cuando quieras.</p>
+    <div class="precios">
+      <div class="plan"><h3 class="f">Menú Básico</h3><div class="p"><b>RD$500</b><span>al mes · instalación RD$2,500</span></div>
+        <ul><li>Menú con fotos y precios, con tus colores</li><li>Pedidos directo a tu WhatsApp</li><li>Cambias el plato del día tú mismo</li><li>QR listo pa' imprimir</li></ul></div>
+      <div class="plan top"><span class="eti">El más pedido</span><h3 class="f">Menú Pro</h3><div class="p"><b>RD$800</b><span>al mes · instalación RD$5,000</span></div>
+        <ul><li>Todo lo del Básico</li><li>Diseño a la medida de tu marca</li><li>Versión de celular y computadora</li><li>Pedidos grandes pa' oficinas y catering</li></ul></div>
+      <div class="plan"><h3 class="f">Tu marca</h3><div class="p"><b>RD$4,500</b><span>logo · RD$7,500 marca completa</span></div>
+        <ul><li>Logo, colores y tipografías</li><li>Sello y mini manual de uso</li><li>Artes pa' Instagram (opcional)</li></ul></div>
+    </div>
+    <div class="fundador"><b>🎉 Oferta de cliente fundador</b>A los primeros comercios les instalamos el Menú Básico gratis y el primer mes va por nosotros.</div>
+  </section>
+
+  <section class="preguntas">
+    <h2 class="f">Preguntas</h2>
+    <details><summary>¿Mis clientes tienen que descargar algo?</summary><p>No. Abre en el navegador del celular con el QR o con tu link, como cualquier página.</p></details>
+    <details><summary>¿Cobran comisión por pedido?</summary><p>No. Pagas la mensualidad y ya. Lo que vendes es tuyo completo.</p></details>
+    <details><summary>¿Y si cambio los precios o se me acaba un plato?</summary><p>Desde tu celular marcas «agotado» o cambias el plato del día. Los cambios grandes nos los mandas por WhatsApp y te los hacemos.</p></details>
+    <details><summary>¿Cuánto dura en estar listo?</summary><p>De 5 a 7 días después de que nos mandes tus platos, precios y fotos.</p></details>
+    <details><summary>¿Hay contrato de permanencia?</summary><p>No. Si un día no lo quieres, avisas con 30 días y listo.</p></details>
+  </section>
+</main>
+
+<div class="final">
+  <h2 class="f">¿Te armo una demo de tu negocio?</h2>
+  <p>Mándame el nombre de tu negocio y lo que vendes. En un ratico te enseño cómo se vería.</p>
+  <a class="boton wa" href="https://wa.me/qr/2L4HZZSUOEHDF1"><span class="ico">💬</span><span><b>Escríbeme por WhatsApp</b><small>Sin compromiso</small></span><span class="fl">→</span></a>
+  <small class="pie">Ratiko Studio · Santiago de los Caballeros · @ratikostudio</small>
+</div>
+</body>
+</html>
