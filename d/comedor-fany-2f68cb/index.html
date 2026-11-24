@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comedor Fany · Comida criolla</title>
+<meta name="theme-color" content="#D7192A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Caveat+Brush&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c1:#D7192A; --c1d:#8F0F1B; --c2:#FFC72C; --c3:#FFE08A; --crema:#FFF6EE; --papel:#FFFFFF; --tinta:#2A1414; --gris:#7b6d62; --linea:#F2D8CC;
+  --tit:"Paytone One", Georgia, serif; --mano:"Caveat Brush", cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--crema);color:var(--tinta);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+button{font:inherit;cursor:pointer}
+.tit{font-family:var(--tit);font-weight:400;line-height:.92;letter-spacing:-.01em}
+.mano{font-family:var(--mano);font-weight:400}
+/* grano */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.12;mix-blend-mode:multiply;
+ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- barra superior ---------- */
+.nav{position:sticky;top:0;z-index:40;background:var(--c1);color:#fff;display:flex;align-items:center;gap:14px;padding:10px 16px;box-shadow:0 2px 0 var(--c1d)}
+.nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;min-width:0}
+.nav .logo b{width:40px;height:40px;border-radius:50%;background:var(--c2);color:var(--c1d);display:grid;place-items:center;font-family:var(--tit);font-size:21px;flex:none;box-shadow:0 0 0 3px #fff}
+.nav .logo span{font-family:var(--tit);font-size:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav .links{display:none;gap:4px;margin-left:auto}
+.nav .links a{color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:8px 12px;border-radius:99px}
+.nav .links a:hover{background:rgba(255,255,255,.16)}
+.nav .carro{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--c2);color:var(--tinta);border:none;border-radius:99px;padding:8px 14px;font-weight:800;font-size:14px}
+@media (max-width:759px){.nav .carro span{display:none}}
+.nav .carro i{font-style:normal;background:var(--tinta);color:#fff;border-radius:99px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px}
+
+/* ---------- portada tipo cartel ---------- */
+.hero{position:relative;background:var(--c1);color:#fff;overflow:hidden;padding:26px 16px 70px;text-align:center}
+.hero .meta{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.hero .meta .ab{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.18);padding:5px 10px;border-radius:99px;margin-top:8px;letter-spacing:.04em;text-transform:none}
+.hero .meta .ab:before{content:"";width:8px;height:8px;border-radius:50%;background:#9BE07A}
+.eco{position:relative;margin:18px auto 0;max-width:1100px;min-height:clamp(220px,52vw,520px);display:flex;flex-direction:column;justify-content:center}
+.eco .p{align-self:center;width:max-content;font-family:var(--tit);font-size:120px;line-height:.86;text-transform:uppercase;white-space:nowrap;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.55)}
+.eco .p.lleno{color:var(--c2);-webkit-text-stroke:0;text-shadow:5px 5px 0 var(--c1d)}
+.eco .plato{position:absolute;left:50%;top:50%;width:clamp(190px,48vw,430px);transform:translate(-50%,-46%) rotate(-8deg);filter:drop-shadow(0 26px 22px rgba(0,0,0,.35));animation:flota 6s ease-in-out infinite}
+@keyframes flota{50%{transform:translate(-50%,-50%) rotate(-3deg)}}
+.precio-tag{position:absolute;left:50%;bottom:-6px;transform:translateX(-78%) rotate(-4deg);display:flex;align-items:stretch;background:#fff;color:var(--tinta);border-radius:14px;overflow:hidden;box-shadow:0 12px 24px rgba(0,0,0,.25);z-index:3;text-align:left}
+.precio-tag .q{background:var(--c1d);color:#fff;font-weight:800;font-size:12px;padding:10px 10px;display:grid;place-items:center;letter-spacing:.06em}
+.precio-tag .d{padding:7px 14px 8px}
+.precio-tag small{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--c1)}
+.precio-tag b{font-family:var(--tit);font-size:clamp(26px,6vw,40px);line-height:1}
+.destello{position:absolute;color:var(--c2);font-size:28px;opacity:.95}
+.hero .acciones{margin-top:34px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:14px;padding:14px 20px;font-weight:800;font-size:15px;text-decoration:none}
+.btn.a{background:var(--c2);color:var(--tinta);box-shadow:0 4px 0 var(--c1d)}
+.btn.b{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.chips span{font-size:13px;font-weight:700;background:rgba(0,0,0,.16);padding:7px 12px;border-radius:99px}
+.onda{display:block;width:100%;height:34px;margin-top:-33px;position:relative;z-index:2}
+
+/* ---------- lo de hoy (bloque dividido) ---------- */
+.hoy{display:grid;grid-template-columns:1fr;max-width:1180px;margin:34px auto 0;padding:0 16px;gap:0}
+.hoy .izq{position:relative;border-radius:26px 26px 0 0;min-height:290px;display:grid;place-items:center;overflow:hidden;background:var(--c3)}
+.hoy .izq img{width:min(290px,72%);position:relative;filter:drop-shadow(0 18px 18px rgba(0,0,0,.35));transform:rotate(6deg)}
+.hoy .estrella{position:absolute;top:16px;right:16px;width:96px;height:96px;display:grid;place-items:center;text-align:center;color:var(--tinta);font-weight:800;font-size:13px;line-height:1.05;transform:rotate(12deg)}
+.hoy .estrella svg{position:absolute;inset:0;width:100%;height:100%}
+.hoy .estrella span{position:relative}
+.hoy .der{background:var(--papel);border-radius:0 0 26px 26px;padding:24px 22px 26px;border:2px solid var(--linea);border-top:0}
+.hoy .et{font-family:var(--mano);font-size:24px;color:var(--c1)}
+.hoy h2{font-family:var(--tit);font-weight:400;font-size:clamp(40px,9vw,66px);line-height:.92;color:var(--c1d);text-transform:uppercase;margin-top:4px}
+.hoy p{margin-top:10px;color:var(--gris);font-size:15px;line-height:1.45;max-width:420px}
+.hoy .fila{display:flex;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap}
+.hoy .fila .pr{font-family:var(--tit);font-size:34px;color:var(--c1)}
+.hoy .btn.a{background:var(--c1);color:#fff;box-shadow:0 4px 0 var(--c1d)}
+
+/* ---------- categorías ---------- */
+.cats{position:sticky;top:60px;z-index:30;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:12px 16px;background:var(--crema);margin-top:26px}
+.cats::-webkit-scrollbar{display:none}
+.cats a{flex:none;text-decoration:none;color:var(--tinta);font-weight:800;font-size:14px;padding:9px 16px;border-radius:99px;border:2px solid var(--tinta);background:var(--papel)}
+.cats a.on{background:var(--tinta);color:#fff}
+
+.cuerpo{max-width:1180px;margin:0 auto;padding:0 16px 120px}
+.sec{padding-top:30px;scroll-margin-top:120px}
+.sec-head{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.sec-head h2{font-family:var(--tit);font-weight:400;font-size:clamp(40px,9vw,64px);line-height:.9;text-transform:uppercase;color:var(--c1d)}
+.sec-head .nota{font-family:var(--mano);font-size:24px;color:var(--c1);display:flex;align-items:center;gap:4px;transform:rotate(-3deg);margin-bottom:6px}
+.sec-head .nota svg{width:44px;height:30px}
+.sec .sub{color:var(--gris);font-size:14px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:var(--papel);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;border:2px solid var(--linea);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 22px -14px rgba(0,0,0,.4)}
+.card .panel{position:relative;aspect-ratio:1/.82;display:grid;place-items:center}
+.card .panel img{width:84%;filter:drop-shadow(0 10px 10px rgba(0,0,0,.28));transition:transform .5s cubic-bezier(.2,.9,.3,1.3)}
+.card:hover .panel img{transform:rotate(10deg) scale(1.04)}
+.card .tag{position:absolute;top:10px;left:10px;background:#fff;color:var(--tinta);font-family:var(--mano);font-size:16px;padding:2px 10px;border-radius:8px;transform:rotate(-5deg);box-shadow:2px 2px 0 var(--tinta)}
+.card .info{padding:12px 12px 12px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:15.5px;font-weight:800;line-height:1.2}
+.card .desc{font-size:12.5px;color:var(--gris);margin-top:3px;line-height:1.3;flex:1}
+.card .pie{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:6px}
+.card .precio{font-family:var(--tit);font-size:20px;color:var(--c1)}
+.card .add{border:none;border-radius:99px;background:var(--c1);color:#fff;font-weight:800;font-size:13px;padding:8px 12px;white-space:nowrap}
+.card .qty{display:none;align-items:center;gap:6px;background:var(--tinta);color:#fff;border-radius:99px;padding:3px}
+.card .qty button{width:28px;height:28px;border-radius:50%;border:none;background:rgba(255,255,255,.16);color:#fff;font-weight:800}
+.card.tiene{border-color:var(--c1)}
+.card.agotado{opacity:.55;filter:grayscale(.8);pointer-events:none}
+.card.agotado .add{background:#888}.card.agotado .panel:after{content:"AGOTADO";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-12deg);background:var(--tinta);color:#fff;font-weight:800;font-size:14px;letter-spacing:.1em;padding:6px 14px;border-radius:8px}
+.aviso-hoy{display:none;position:relative;z-index:3;max-width:620px;margin:14px auto 0;background:var(--c2);color:var(--tinta);font-weight:800;font-size:15px;padding:10px 16px;border-radius:14px;box-shadow:3px 3px 0 var(--tinta)}
+.aviso-hoy.ver{display:block}
+.card.tiene .add{display:none}.card.tiene .qty{display:flex}
+
+/* banda de catering / encargos */
+.banda{margin:40px -16px 0;padding:34px 16px 38px;background:var(--c1d);color:#fff;position:relative}
+.banda .sec-head h2{color:var(--c2)}
+.banda .sec-head .nota{color:#fff}
+.banda .sub{color:rgba(255,255,255,.8)}
+.banda .card{background:#fff;color:var(--tinta);border-color:transparent}
+
+/* pie */
+.patron{height:70px;background:var(--c1)}
+footer{background:var(--tinta);color:rgba(255,255,255,.8);text-align:center;padding:30px 16px 120px;font-size:13px;line-height:1.6}
+footer .gr{font-family:var(--mano);font-size:30px;color:var(--c2);display:block;margin-bottom:6px}
+footer .firma{display:inline-flex;align-items:center;gap:8px;margin-top:14px;color:#fff;text-decoration:none;font-weight:700;background:rgba(255,255,255,.08);padding:8px 14px;border-radius:99px}
+footer .firma img{width:22px;height:22px}
+
+/* ---------- pedido ---------- */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:45;padding:12px 16px calc(12px + env(safe-area-inset-bottom));transform:translateY(130%);transition:transform .35s cubic-bezier(.2,.9,.3,1.1)}
+.barra.ver{transform:none}
+.barra button{width:100%;max-width:560px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--tinta);color:#fff;border:none;border-radius:18px;padding:15px 18px;font-weight:800;font-size:16px;box-shadow:0 12px 28px rgba(0,0,0,.35)}
+.barra i{font-style:normal;background:var(--c2);color:var(--tinta);border-radius:99px;padding:2px 10px}
+.velo{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:60;opacity:0;pointer-events:none;transition:opacity .3s}
+.velo.ver{opacity:1;pointer-events:auto}
+.pedido{position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--papel);border-radius:26px 26px 0 0;max-height:88vh;overflow:auto;padding:20px 18px calc(24px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .4s cubic-bezier(.2,.9,.3,1)}
+.pedido.ver{transform:none}
+.pedido h2{font-family:var(--tit);font-weight:400;font-size:36px;color:var(--c1d);text-transform:uppercase}
+.pedido .cerrar{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;border:none;background:var(--crema);font-size:20px}
+.vacio{color:var(--gris);font-size:14px;margin:14px 0}
+.linea{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1.5px dashed var(--linea)}
+.linea img{width:46px;height:46px;flex:none}
+.linea span{flex:1;font-size:14px;font-weight:700;line-height:1.2}
+.linea small{display:block;color:var(--c1);font-weight:800}
+.linea .q{display:flex;align-items:center;gap:4px}
+.linea .q button{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--linea);background:#fff;font-weight:800}
+.total{display:flex;justify-content:space-between;font-weight:800;font-size:18px;margin-top:14px}
+.nota-envio{font-size:12px;color:var(--gris);margin-top:2px}
+.pedido label{display:block;font-weight:800;font-size:13.5px;margin:14px 0 6px}
+.pedido input,.pedido textarea{width:100%;border:1.5px solid var(--linea);border-radius:12px;padding:11px 12px;font:inherit;font-size:15px;background:#fff}
+.modo{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.modo button{border:1.5px solid var(--linea);background:#fff;border-radius:12px;padding:11px;font-weight:700}
+.modo button.on{border-color:var(--c1);background:color-mix(in srgb,var(--c1) 12%,#fff);color:var(--c1d)}
+.enviar{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;background:#1FA855;color:#fff;text-decoration:none;font-weight:800;font-size:16px;border-radius:16px;padding:15px}
+.enviar svg{width:22px;height:22px}
+.enviar.off{opacity:.45;pointer-events:none}
+.aviso{font-size:12px;color:var(--gris);text-align:center;margin-top:8px}
+
+/* detalle */
+.detalle{position:fixed;z-index:80;left:50%;top:50%;width:min(92vw,460px);background:var(--papel);border-radius:26px;overflow:hidden;transform:translate(-50%,-44%) scale(.96);opacity:0;pointer-events:none;transition:.3s}
+.detalle.ver{opacity:1;pointer-events:auto;transform:translate(-50%,-50%)}
+.detalle .panel{background:var(--c3);display:grid;place-items:center;padding:20px}
+.detalle .panel img{width:68%;filter:drop-shadow(0 14px 14px rgba(0,0,0,.3))}
+.detalle .tx{padding:18px 20px 20px}
+.detalle h3{font-family:var(--tit);font-weight:400;font-size:30px;line-height:.95;color:var(--c1d)}
+.detalle p{color:var(--gris);font-size:14.5px;margin-top:8px}
+.detalle .x{font-family:var(--mano);font-size:20px;color:var(--c1);margin-top:6px}
+.detalle .pie{display:flex;gap:10px;align-items:center;margin-top:16px}
+.detalle .n{display:flex;align-items:center;gap:8px;background:var(--crema);border-radius:99px;padding:4px}
+.detalle .n button{width:34px;height:34px;border-radius:50%;border:none;background:#fff;font-weight:800;font-size:18px}
+.detalle .agregar{flex:1;border:none;border-radius:14px;background:var(--c1);color:#fff;font-weight:800;font-size:15px;padding:13px}
+.detalle .cerrar{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;border:none;background:#fff;font-size:20px}
+
+/* ---------- escritorio ---------- */
+@media (min-width:760px){
+  .grid{grid-template-columns:repeat(3,1fr);gap:18px}
+  .hoy{grid-template-columns:1.05fr 1fr}
+  .hoy .izq{border-radius:30px 0 0 30px;min-height:420px}
+  .hoy .der{border-radius:0 30px 30px 0;border:2px solid var(--linea);border-left:0;display:flex;flex-direction:column;justify-content:center;padding:40px}
+  .hero{padding:40px 24px 90px}
+  .precio-tag{bottom:10px}
+}
+@media (min-width:1100px){
+  .nav{padding:12px 32px}
+  .nav .links{display:flex}
+  .nav .carro{margin-left:12px}
+  .layout{display:grid;grid-template-columns:1fr 360px;gap:28px;max-width:1300px;margin:0 auto;padding:0 32px}
+  .cuerpo{padding:0 0 80px;max-width:none}
+  .hoy{padding:0;margin-top:40px;max-width:none}
+  .cats{display:none}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .banda{margin:44px 0 0;border-radius:30px;padding:36px 30px 40px}
+  .pedido{position:sticky;top:84px;transform:none;border-radius:26px;max-height:calc(100vh - 100px);margin-top:40px;border:2px solid var(--linea);box-shadow:0 18px 30px -20px rgba(0,0,0,.4);z-index:5}
+  .pedido .cerrar{display:none}
+  .barra{display:none}
+  .velo{display:none}
+  .velo.det{display:block}
+  footer{padding-bottom:40px}
+}
+/* ===== variante LIMPIO: portada con foto, fotos rectangulares, mucho aire ===== */
+.hero-foto{display:none}
+.limpio .eco{display:none}
+.limpio .hero{background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.6)),url(fotos/portada.webp) center/cover;padding:40px 18px 80px;min-height:520px;display:flex;flex-direction:column;justify-content:center}
+.limpio .hero-foto{display:block;margin-top:26px}
+.limpio .hero-foto h1{font-family:var(--tit);font-weight:400;font-size:clamp(54px,12vw,120px);line-height:.95;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.35)}
+.limpio .hero-foto p{font-size:18px;max-width:520px;margin:14px auto 0;opacity:.95}
+.limpio .onda{display:none}
+.limpio .nav{background:var(--papel);color:var(--tinta);box-shadow:0 1px 0 var(--linea)}
+.limpio .nav .logo,.limpio .nav .links a{color:var(--tinta)}
+.limpio .nav .logo b{box-shadow:none;background:var(--c1);color:#fff}
+.limpio .card{border:none;box-shadow:0 10px 24px -16px rgba(0,0,0,.35)}
+.limpio .card .panel{aspect-ratio:4/3;background:none!important;overflow:hidden}
+.limpio .card .panel img{width:100%;height:100%;object-fit:cover;filter:none;transform:none!important}
+.limpio .card:hover .panel img{transform:scale(1.05)!important}
+.limpio .hoy .izq{background:none!important}
+.limpio .hoy .izq img{width:100%;height:100%;object-fit:cover;transform:none;filter:none;position:absolute;inset:0}
+.limpio .sec-head h2,.limpio .hoy h2,.limpio .pedido h2{text-transform:none;letter-spacing:0}
+.limpio .detalle .panel{padding:0}.limpio .detalle .panel img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:none}
+.limpio .patron{height:10px}
+/* ===== variante FESTIVO: franjas, tarjetas inclinadas, letra script ===== */
+.festivo .hero{background:var(--c1)}
+.festivo .hero:before{content:"";position:absolute;left:0;right:0;top:0;height:14px;background:linear-gradient(90deg,var(--c2) 0 50%,var(--c1) 50% 75%,var(--c1d) 75%)}
+.festivo .eco .p{text-transform:none}
+.festivo .sec-head h2,.festivo .hoy h2,.festivo .pedido h2{text-transform:none}
+.festivo .grid .card:nth-child(odd){transform:rotate(-1.6deg)}
+.festivo .grid .card:nth-child(even){transform:rotate(1.6deg)}
+.festivo .grid .card:hover{transform:rotate(0) translateY(-4px)}
+.festivo .sec{position:relative}
+.festivo .sec-head:after{content:"";display:block;width:100%;height:8px;margin-top:8px;background:linear-gradient(90deg,var(--c2) 0 50%,var(--c1) 50% 75%,var(--c1d) 75%);border-radius:99px}
+
+/* ===== variante CON-MARCA: logo y mascota del cliente ===== */
+.marca-hero,.masc-hoy,.masc-vacio,.masc-pie,.toast{display:none}
+.con-marca .eco{display:none}
+.con-marca .hero{background:
+  radial-gradient(circle at 50% 46%,transparent 0 30%,rgba(0,0,0,0) 30%),
+  repeating-conic-gradient(from 0deg at 50% 46%,var(--c1) 0 9deg,transparent 9deg 24deg),
+  radial-gradient(color-mix(in srgb,var(--c1) 30%,var(--c2)) 22%,transparent 24%) 0 0/34px 34px,
+  var(--c2);color:var(--tinta);padding-bottom:40px}
+.con-marca .hero .meta .ab{background:rgba(255,255,255,.75)}
+.con-marca .marca-hero{display:grid;position:relative;max-width:1000px;margin:10px auto 0;grid-template-columns:1fr;justify-items:center}
+.marca-hero .logo-g{width:min(78vw,430px);filter:drop-shadow(0 18px 24px rgba(0,0,0,.35));animation:respira 5s ease-in-out infinite}
+@keyframes respira{50%{transform:scale(1.03) rotate(-2deg)}}
+.marca-hero .masc{position:absolute;right:max(-2vw,calc(50% - 330px));bottom:-30px;width:min(40vw,230px);filter:drop-shadow(8px 12px 0 rgba(0,0,0,.2))}
+.marca-hero .globo{position:absolute;left:max(0px,calc(50% - 320px));top:8%;background:#fff;color:var(--tinta);font-family:var(--mano);font-size:clamp(17px,4.6vw,24px);padding:10px 16px;border-radius:20px 20px 20px 4px;box-shadow:3px 3px 0 var(--tinta);transform:rotate(-5deg);max-width:200px;line-height:1.1}
+.con-marca .hero .acciones{margin-top:40px}
+.con-marca .hero .btn.b{color:var(--tinta);box-shadow:inset 0 0 0 2px var(--tinta);background:rgba(255,255,255,.6)}
+.con-marca .hero .btn.a{background:var(--c1);color:#fff;box-shadow:0 4px 0 var(--c1d)}
+.con-marca .chips span{background:rgba(255,255,255,.8);color:var(--tinta)}
+.con-marca .onda path{fill:var(--c2)}
+.con-marca .masc-hoy{display:block;position:absolute;left:4%;bottom:0;height:92%;z-index:2;filter:drop-shadow(6px 8px 0 rgba(0,0,0,.18))}
+.con-marca .hoy .izq img#hoy-img{position:absolute;right:5%;top:50%;transform:translateY(-50%) rotate(6deg);width:min(230px,46%);z-index:1}
+.con-marca .masc-hoy{height:80%!important;bottom:3%!important;left:0!important}
+.con-marca .hoy .izq img#hoy-img{z-index:3!important;width:min(250px,52%)!important;right:3%!important}
+@media (min-width:760px){.con-marca .hoy{grid-template-columns:1.25fr 1fr}}
+.con-marca .hero .meta{display:inline-block;background:rgba(255,255,255,.85);padding:8px 14px;border-radius:14px;box-shadow:3px 3px 0 var(--tinta)}
+@media (max-width:759px){.con-marca .marca-hero .masc{width:31vw;right:0;bottom:-14px}.con-marca .marca-hero .globo{top:2%}}
+.con-marca .hoy .izq{background:radial-gradient(color-mix(in srgb,var(--c1) 35%,var(--c2)) 22%,transparent 24%) 0 0/30px 30px,var(--c2)!important}
+.con-marca .masc-vacio{display:block;width:120px;margin:6px auto 0}
+.con-marca .masc-pie{display:block;width:150px;margin:-110px auto 8px;position:relative}
+.con-marca .patron{height:110px}
+.toast{position:fixed;left:50%;bottom:90px;z-index:95;transform:translateX(-50%) translateY(20px);opacity:0;transition:.35s;display:flex;align-items:center;gap:8px;background:#fff;border-radius:20px;padding:6px 16px 6px 6px;box-shadow:0 12px 26px rgba(0,0,0,.3),3px 3px 0 var(--tinta);font-weight:800;pointer-events:none}
+.con-marca .toast{display:flex}
+.toast.ver{opacity:1;transform:translateX(-50%)}
+.toast img{height:64px}
+@media (min-width:760px){
+  .con-marca .marca-hero .masc{width:270px;bottom:-40px}
+  .con-marca .marca-hero .globo{top:14%}
+}
+@media (min-width:1100px){.toast{left:auto;right:410px;transform:translateY(20px)}.toast.ver{transform:none}}
+
+.card .precio,.hoy .fila .pr{font-family:'DM Sans',sans-serif;font-weight:800}
+</style>
+</head>
+<body class="cartel">
+<nav class="nav">
+  <a class="logo" href="#"><b>F</b><span>Comedor Fany</span></a>
+  <div class="links" id="links"></div>
+  <button class="carro" id="carro" aria-label="Ver mi pedido">🛒 <span>Mi pedido</span> <i id="cuenta-n">0</i></button>
+</nav>
+
+<header class="hero">
+  <div class="aviso-hoy" id="aviso-hoy"></div>
+  <div class="meta">Comida criolla · 📍 Av. Estrella Sadhalá 94<br><span class="ab">Abierto hasta 10:30 pm</span></div>
+  <div class="eco" id="eco">
+    <div class="p">FANY</div><div class="p lleno">FANY</div><div class="p">FANY</div>
+    <img class="plato" id="hero-plato" alt="">
+    <div class="precio-tag" id="hero-tag"><div class="q">HOY</div><div class="d"><small id="hero-nom"></small><b id="hero-pr"></b></div></div>
+    <span class="destello" style="left:8%;top:12%">✦</span><span class="destello" style="right:10%;top:62%;font-size:20px">✦</span><span class="destello" style="right:18%;top:8%;font-size:16px">✦</span>
+  </div>
+  <div class="marca-hero"><img class="logo-g" src="fotos/logo.png" alt=""><img class="masc" src="fotos/m-bandeja.png" alt=""><div class="globo">¡Hola! ¿Qué te sirvo hoy? 😋</div></div>
+  <div class="hero-foto"><h1 class="tit">Comedor Fany</h1><p>El bufé criollo de la Estrella Sadhalá, hasta las 10:30. Pide aquí y te llega por WhatsApp.</p></div>
+  <div class="acciones"><button class="btn a" id="hero-add">+ Pedir este</button><a class="btn b" href="#menu">Ver el menú ↓</a></div>
+  <div class="chips"><span>🍛 Bufé criollo</span><span>🌙 Hasta las 10:30 pm</span><span>🛵 Delivery</span></div>
+</header>
+<svg class="onda" viewBox="0 0 400 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H400 V12 Q 375 30 350 16 T 300 16 T 250 18 T 200 14 T 150 18 T 100 15 T 50 18 T 0 14 Z" fill="var(--c1)"/></svg>
+
+<nav class="cats" id="cats"></nav>
+
+<div class="layout">
+  <div>
+    <section class="hoy" id="hoy">
+      <div class="izq" id="hoy-izq">
+        <img id="hoy-img" alt=""><img class="masc-hoy" src="fotos/m-presenta.png" alt="">
+        <div class="estrella"><svg viewBox="0 0 100 100"><path fill="var(--c2)" d="M50 2l9 14 16-6 1 17 17 2-7 15 13 11-15 8 4 16-17-1-6 16-15-8-15 8-6-16-17 1 4-16-15-8 13-11-7-15 17-2 1-17 16 6z"/></svg><span id="hoy-sello">EL MÁS<br>PEDIDO</span></div>
+      </div>
+      <div class="der">
+        <div class="et">Lo de hoy 👇</div>
+        <h2 id="hoy-n"></h2>
+        <p id="hoy-d"></p>
+        <div class="fila"><span class="pr" id="hoy-p"></span><button class="btn a" id="hoy-add">+ Lo quiero</button></div>
+      </div>
+    </section>
+    <main class="cuerpo" id="menu"></main>
+  </div>
+  <aside class="pedido" id="pedido" aria-label="Tu pedido">
+    <button class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+    <h2>Tu pedido</h2>
+    <div id="lineas"></div>
+    <div class="total"><span>Total</span><span id="total">RD$0</span></div>
+    <div class="nota-envio" id="nota-envio"></div>
+    <label>¿Cómo lo quieres?</label>
+    <div class="modo" id="modo"><button data-m="delivery" class="on">🛵 Delivery</button><button data-m="recoger">🏠 Paso a buscarlo</button></div>
+    <label for="nombre">Tu nombre</label><input id="nombre" placeholder="Ej. María" autocomplete="name">
+    <div id="dir-box"><label for="dir">Dirección</label><input id="dir" placeholder="Sector, calle, casa y referencia" autocomplete="street-address"></div>
+    <label for="nota">¿Algo más? <span style="font-weight:400;color:var(--gris)">(opcional)</span></label>
+    <textarea id="nota" rows="2" placeholder="Ej. sin cebolla, cambio de RD$1,000"></textarea>
+    <a class="enviar off" id="enviar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>Enviar pedido por WhatsApp</a>
+    <p class="aviso">Se abre WhatsApp con tu pedido escrito. Solo tienes que darle a enviar.</p>
+  </aside>
+</div>
+
+<div class="patron" id="patron"></div>
+<footer>
+  <img class="masc-pie" src="fotos/m-baila.png" alt=""><span class="gr">¡Gracias por preferirnos!</span>
+  Demo preparada por Ratiko Studio para Comedor Fany.<br>Precios y platos de ejemplo: los cambiamos por los tuyos.<br>
+  <a class="firma" href="https://instagram.com/ratikostudio" target="_blank" rel="noopener"><img src="fotos/ratiko.svg" alt="">Menú diseñado por Ratiko Studio</a>
+</footer>
+
+<div class="barra" id="barra"><button id="abrir"><span><i id="cuenta">0</i> Ver mi pedido</span><span id="subtotal">RD$0</span></button></div>
+<div class="velo" id="velo"></div>
+<div class="toast" id="toast"><img src="fotos/m-celebra.png" alt=""><span>¡Buena elección! 🙌</span></div>
+<div class="detalle" id="detalle" role="dialog" aria-label="Detalle del plato">
+  <button class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+  <div class="panel" id="det-panel"><img id="det-img" alt=""></div>
+  <div class="tx"><h3 id="det-n"></h3><p id="det-d"></p><div class="x" id="det-x"></div>
+    <div class="pie"><div class="n"><button id="det-menos">−</button><b id="det-c">1</b><button id="det-mas">+</button></div><button class="agregar" id="det-add">Agregar</button></div></div>
+</div>
+
+<script>
+const NEGOCIO = {"nombre": "Comedor Fany", "whatsapp": "18494011729", "delivery": 100, "hoy": "platos1"};
+const MENU = [{"id": "platos", "nombre": "Bufé", "nota": "como en casa", "sub": "Arma tu plato con lo de hoy", "items": [{"n": "Pollo frito", "d": "Con arroz y habichuelas o tostones", "p": 250, "img": "pollo", "tag": "El favorito"}, {"n": "Locrio de pollo", "d": "Con ensalada", "p": 225, "img": "locrio", "tag": "Hoy", "x": "Bien sazonado."}, {"n": "Moro de habichuelas negras", "d": "Con carne del día", "p": 250, "img": "moro"}, {"n": "Arroz amarillo", "d": "Con carne del día y ensalada", "p": 225, "img": "arroz"}, {"n": "Ensalada de vegetales", "d": "Porción", "p": 75, "img": "ensalada"}, {"n": "Espaguetis", "d": "A la dominicana", "p": 150, "img": "espaguetis"}]}, {"id": "bebidas", "nombre": "Bebidas", "nota": "bien frías", "sub": "Pa' acompañar", "bebida": true, "items": [{"n": "Refresco", "d": "Bien frío", "p": 50, "img": "refresco"}, {"n": "Jugo natural", "d": "Pregunta por el de hoy", "p": 75, "img": "jugo"}, {"n": "Agua", "d": "Botellita", "p": 25, "img": "agua"}]}];
+const PANELES = ["#FFE08A", "#FFC1C1", "#FFF1E0", "#D7192A"];
+
+const rd = n => "RD$" + n.toLocaleString("es-DO");
+const $ = s => document.querySelector(s);
+const carrito = {}, porId = {};
+let modo = NEGOCIO.modo || "delivery", detId = null, detN = 1;
+const flecha = '<svg viewBox="0 0 44 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 26 C 10 6, 26 4, 36 14"/><path d="M30 15 L37 15 L36 8"/></svg>';
+
+// patrón geométrico del pie
+$("#patron").style.background = `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='70' height='70'><rect width='70' height='70' fill='${PANELES[0]}'/><path d='M0 35 L17.5 0 L35 35 L52.5 0 L70 35 L52.5 70 L35 35 L17.5 70 Z' fill='${PANELES[1]}'/><circle cx='35' cy='35' r='7' fill='${PANELES[2]}'/></svg>`)}")`;
+
+// menú
+let html = "", links = "", cats = "", k = 0;
+MENU.forEach(c => {
+  links += `<a href="#${c.id}">${c.nombre}</a>`; cats += `<a href="#${c.id}">${c.nombre}</a>`;
+  html += `<section class="sec${c.banda ? " banda" : ""}" id="${c.id}"><div class="sec-head"><h2>${c.nombre}</h2><span class="nota">${flecha}${c.nota}</span></div><p class="sub">${c.sub}</p><div class="grid">`;
+  c.items.forEach((it, i) => {
+    const id = c.id + i; porId[id] = it; const col = PANELES[(k++) % PANELES.length];
+    html += `<div class="card" data-id="${id}"><div class="panel" style="background:${col}">${it.tag ? `<span class="tag">${it.tag}</span>` : ""}<img src="fotos/${it.img}.webp" alt="${it.n}"></div>
+      <div class="info"><h3>${it.n}</h3><div class="desc">${it.d}</div><div class="pie"><span class="precio">${rd(it.p)}</span>
+      <button class="add" data-a="+">+ Agregar</button><div class="qty"><button data-a="-">−</button><b>0</b><button data-a="+">+</button></div></div></div></div>`;
+  });
+  html += `</div></section>`;
+});
+$("#menu").innerHTML = html; $("#links").innerHTML = links; $("#cats").innerHTML = cats;
+
+// portada y lo de hoy
+const favId = MENU[0].id + "0", fav = porId[favId], hoyId = NEGOCIO.hoy || favId, hoy = porId[hoyId];
+$("#hero-plato").src = `fotos/${fav.img}.webp`; $("#hoy-img").src = `fotos/${hoy.img}.webp`;
+$("#hero-nom").textContent = fav.n; $("#hero-pr").textContent = rd(fav.p); document.querySelector("#hero-tag .q").textContent = "★";
+// la palabra gigante ocupa todo el ancho
+function ajustar() { const e = $("#eco"), ps = e.querySelectorAll(".p"); ps.forEach(p => p.style.fontSize = "100px"); const w = ps[1].getBoundingClientRect().width; const f = Math.min(NEGOCIO.palabra_max || 230, 100 * e.clientWidth / w * .98); ps.forEach(p => p.style.fontSize = f + "px"); }
+ajustar(); document.fonts.ready.then(ajustar); addEventListener("resize", ajustar);
+$("#hoy-n").textContent = hoy.n; $("#hoy-d").textContent = hoy.x ? hoy.d + ". " + hoy.x : hoy.d; $("#hoy-p").textContent = rd(hoy.p);
+$("#hoy-izq").style.background = `${PANELES[1]} url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56'><path d='M0 28h56M28 0v56' stroke='${PANELES[0]}' stroke-width='10' opacity='.35'/></svg>`)}")`;
+$("#hoy-sello").innerHTML = (NEGOCIO.sello_hoy || "PLATO<br>DEL DÍA");
+
+let tt; function sumar(id, d) { if (d > 0 && document.body.classList.contains("con-marca")) { const t = $("#toast"); t.classList.add("ver"); clearTimeout(tt); tt = setTimeout(() => t.classList.remove("ver"), 1600); } carrito[id] = Math.max(0, (carrito[id] || 0) + d); if (!carrito[id]) delete carrito[id]; pintar(); }
+$("#hero-add").onclick = () => sumar(favId, 1); $("#hoy-add").onclick = () => sumar(hoyId, 1);
+$("#menu").addEventListener("click", e => {
+  const card = e.target.closest(".card"); if (!card) return; const id = card.dataset.id; const b = e.target.closest("button");
+  if (b) { sumar(id, b.dataset.a === "+" ? 1 : -1); return; }
+  detId = id; detN = 1; const it = porId[id];
+  $("#det-img").src = `fotos/${it.img}.webp`; $("#det-n").textContent = it.n; $("#det-d").textContent = it.d; $("#det-x").textContent = it.x || "";
+  $("#det-panel").style.background = card.querySelector(".panel").style.background; pintarDet(); abrir($("#detalle"));
+});
+function pintarDet() { $("#det-c").textContent = detN; $("#det-add").textContent = `Agregar · ${rd(detN * porId[detId].p)}`; }
+$("#det-menos").onclick = () => { detN = Math.max(1, detN - 1); pintarDet(); };
+$("#det-mas").onclick = () => { detN++; pintarDet(); };
+$("#det-add").onclick = () => { sumar(detId, detN); cerrar(); };
+
+function pintar() {
+  let n = 0, sub = 0, l = "";
+  for (const [id, q] of Object.entries(carrito)) { const it = porId[id]; n += q; sub += q * it.p;
+    l += `<div class="linea"><img src="fotos/${it.img}.webp" alt=""><span>${it.n}<small>${rd(q * it.p)}</small></span><div class="q"><button data-id="${id}" data-a="-">−</button><b>${q}</b><button data-id="${id}" data-a="+">+</button></div></div>`; }
+  document.querySelectorAll(".card").forEach(c => { const q = carrito[c.dataset.id] || 0; c.classList.toggle("tiene", q > 0); c.querySelector(".qty b").textContent = q; });
+  const env = modo === "delivery" && n ? NEGOCIO.delivery : 0;
+  $("#lineas").innerHTML = l || `<img class="masc-vacio" src="fotos/m-saluda.png" alt=""><p class="vacio">Todavía no has escogido nada. Toca un plato pa' agregarlo 👆</p>`;
+  $("#total").textContent = rd(sub + env); $("#nota-envio").textContent = env ? `Incluye ${rd(env)} de delivery.` : "";
+  $("#cuenta").textContent = $("#cuenta-n").textContent = n; $("#subtotal").textContent = rd(sub);
+  $("#barra").classList.toggle("ver", n > 0); $("#enviar").classList.toggle("off", !n); actualizarWa();
+}
+$("#lineas").onclick = e => { const b = e.target.closest("button"); if (b) sumar(b.dataset.id, b.dataset.a === "+" ? 1 : -1); };
+$("#modo").onclick = e => { const b = e.target.closest("button"); if (!b) return; modo = b.dataset.m;
+  document.querySelectorAll("#modo button").forEach(x => x.classList.toggle("on", x === b)); $("#dir-box").style.display = modo === "delivery" ? "" : "none"; pintar(); };
+["nombre", "dir", "nota"].forEach(i => $("#" + i).addEventListener("input", actualizarWa));
+function actualizarWa() {
+  let m = `¡Hola, ${NEGOCIO.nombre}! Quiero hacer un pedido:\n\n`, sub = 0;
+  for (const [id, q] of Object.entries(carrito)) { const it = porId[id]; m += `• ${q}× ${it.n} — ${rd(q * it.p)}\n`; sub += q * it.p; }
+  const env = modo === "delivery" ? NEGOCIO.delivery : 0;
+  m += `\nTotal: ${rd(sub + env)}${env ? ` (incluye ${rd(env)} de delivery)` : ""}\n`;
+  m += modo === "delivery" ? `🛵 Delivery a: ${$("#dir").value || "(escribe tu dirección)"}\n` : `🏠 Paso a buscarlo\n`;
+  if ($("#nombre").value) m += `A nombre de: ${$("#nombre").value}\n`;
+  if ($("#nota").value) m += `Nota: ${$("#nota").value}\n`;
+  $("#enviar").href = `https://wa.me/${NEGOCIO.whatsapp}?text=${encodeURIComponent(m)}`;
+}
+function abrir(h) { h.classList.add("ver"); $("#velo").classList.add("ver"); $("#velo").classList.toggle("det", h.id === "detalle"); }
+function cerrar() { document.querySelectorAll(".pedido,.detalle").forEach(x => x.classList.remove("ver")); $("#velo").classList.remove("ver", "det"); }
+$("#abrir").onclick = $("#carro").onclick = () => { if (innerWidth >= 1100) $("#pedido").scrollIntoView({ behavior: "smooth", block: "nearest" }); else abrir($("#pedido")); };
+$("#velo").onclick = cerrar; document.querySelectorAll("[data-cerrar]").forEach(b => b.onclick = cerrar);
+if (modo === "recoger") $('#modo [data-m="recoger"]').click();
+// categoría activa
+const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) document.querySelectorAll(".cats a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id)); }), { rootMargin: "-40% 0px -55% 0px" });
+document.querySelectorAll(".sec").forEach(s => obs.observe(s));
+pintar();
+
+// ===== Hoja de Google del dueño: plato del día, agotados, precios y aviso =====
+// La hoja tiene las columnas: Plato | Precio | ¿Hay hoy? (SI/NO) | Plato del día (X). Y una fila con Plato = AVISO para un mensaje arriba.
+function csv(t) { const f = []; let c = "", fila = [], q = false;
+  for (let i = 0; i < t.length; i++) { const ch = t[i];
+    if (q) { if (ch === '"' && t[i + 1] === '"') { c += '"'; i++; } else if (ch === '"') q = false; else c += ch; }
+    else if (ch === '"') q = true; else if (ch === ",") { fila.push(c); c = ""; } else if (ch === "\n") { fila.push(c); f.push(fila); fila = []; c = ""; } else if (ch !== "\r") c += ch; }
+  if (c || fila.length) { fila.push(c); f.push(fila); } return f; }
+const norm = s => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "");
+async function cargarHoja() {
+  const url = NEGOCIO.hoja_csv || (NEGOCIO.hoja ? `https://docs.google.com/spreadsheets/d/${NEGOCIO.hoja}/gviz/tq?tqx=out:csv&gid=0` : null);
+  if (!url) return;
+  let filas; try { filas = csv(await (await fetch(url + (url.includes("?") ? "&" : "?") + "t=" + Date.now())).text()); } catch (e) { return; }
+  const porNombre = {}; for (const [id, it] of Object.entries(porId)) porNombre[norm(it.n)] = id;
+  let nuevoHoy = null;
+  filas.slice(1).forEach(([nombre, precio, hay, delDia]) => {
+    if (norm(nombre) === "aviso") { if ((precio || "").trim()) { $("#aviso-hoy").textContent = "📢 " + precio.trim(); $("#aviso-hoy").classList.add("ver"); } return; }
+    const id = porNombre[norm(nombre)]; if (!id) return; const it = porId[id], card = document.querySelector(`.card[data-id="${id}"]`);
+    const p = parseInt(String(precio).replace(/[^0-9]/g, "")); if (p > 0) { it.p = p; if (card) card.querySelector(".precio").textContent = rd(p); }
+    const no = /^\s*(no|agotad)/i.test(hay || ""); if (card) card.classList.toggle("agotado", no); if (no) delete carrito[id];
+    if (/x|si|s[ií]/i.test(delDia || "") && !no) nuevoHoy = id;
+  });
+  if (nuevoHoy) { const h = porId[nuevoHoy]; $("#hoy-img").src = `fotos/${h.img}.webp`; $("#hoy-n").textContent = h.n; $("#hoy-d").textContent = h.x ? h.d + ". " + h.x : h.d; $("#hoy-p").textContent = rd(h.p); $("#hoy-add").onclick = () => sumar(nuevoHoy, 1); }
+  const fav = porId[favId]; $("#hero-pr").textContent = rd(fav.p);
+  pintar();
+}
+cargarHoja();
+</script>
+</body>
+</html>
